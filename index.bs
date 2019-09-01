@@ -1,0 +1,145 @@
+<pre class='metadata'>
+Title: did:key Decentralized Identifier Method Specification
+Boilerplate: issues-index no, copyright no, abstract no
+Shortname: did-key-method-spec
+Level: 1
+Status: w3c/ED
+Group: Credentials Community Group
+URL: https://github.com/digitalbazaar/did-method-key
+Repository: https://github.com/digitalbazaar/did-method-key
+Max ToC Depth: 2
+</pre>
+
+## Copyright
+<p class="copyright">
+<a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+© 2019 the Contributors to the DID Key Method Specification, published by the
+<a href="https://www.w3.org/community/credentials/">Credentials Community
+Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
+A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
+is available.
+</p>
+
+# Preface
+
+The Web DID method specification conforms to the requirements specified in the
+[DID specification](https://w3c-ccg.github.io/did-spec/), currently published by
+the W3C Credentials Community Group. For more information about DIDs and DID
+method specifications, please see the [DID
+Primer](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/did-primer.md)
+
+# Abstract
+
+The `did:key` method is used to express public keys in a way that doesn't
+require a DID Registry of any kind. Its general format is:
+
+```
+did:key:<multibase encoded, multicodec identified, public key>
+```
+
+
+# Example
+
+Example `did:key` DID Document:
+
+```json
+{
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+  "publicKey": [
+    {
+      "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+      "publicKeyBase58": "B12NYF8RrR3h41TDCTJojY59usg3mbtbjnFs7Eud1Y6u"
+    }
+  ],
+  "authentication": [
+    "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH"
+  ],
+  "assertionMethod": [
+    "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH"
+  ],
+  "capabilityDelegation": [
+    "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH"
+  ],
+  "capabilityInvocation": [
+    "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH"
+  ],
+  "keyAgreement": [
+    {
+      "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH#zBzoR5sqFgi6q3iFia8JPNfENCpi7RNSTKF7XNXX96SBY4",
+      "type": "X25519KeyAgreementKey2019",
+      "controller": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+      "publicKeyBase58": "JhNWeSVLMYccCk7iopQW4guaSJTojqpMEELgSLhKwRr"
+    }
+  ]
+}
+```
+
+## Target System
+
+TBD
+
+# DID Method Name
+
+The namestring that shall identify this DID method is: `key`
+
+A DID that uses this method MUST begin with the following prefix: `did:key`. Per
+the DID specification, this string MUST be in lowercase. The remainder of the
+DID, after the prefix, is specified below.
+
+## Method Specific Identifier
+
+```
+did:key:<multibase encoded, multicodec identified, public key>
+```
+
+Issue: Link to Multicodec spec
+
+Issue: Link to Multibase spec
+
+Issue: Add an ABNF definition for this DID method name
+
+## Example
+
+For example, the following DID is formed from a base-58 encoded
+ed25519 public key:
+
+```
+did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH
+```
+
+# JSON-LD Context Definition
+
+TBA
+
+# CRUD Operation Definitions
+
+## Create
+
+TBA
+
+## Read (Resolve)
+
+TBA (Deterministically formed from the encoded key in the DID)
+
+## Update - Not Supported
+
+Immutable method, updates not supported.
+
+## Delete (Revoke) - Not Supported
+
+Immutable method, deletion or revocation not supported.
+
+# Security Considerations
+
+TBA
+
+# Reference Implementations
+
+The code at
+[https://github.com/uport-project/https-did-resolver](https://github.com/uport-project/https-did-resolver)
+is intended to present a reference implementation of this DID method. Any other
+implementations should ensure that they pass the test suite described in
+`/src/__tests__` before claiming compatibility.
