@@ -228,10 +228,12 @@ stored in any registry, they cannot be updated or deactivated.
 
         <p>
 Creating a <tt>did:key</tt> value consists of creating a cryptographic key pair
-and encoding the public key using the format provided in <a href="#format"></a>.
-The creation of a DID Document is also performed by taking the public key
-value and expanding it into DID Document. An example is given below that
-expands the ed25519 <tt>did:key</tt> into its associated DID Document:
+and encoding the public key using the format provided in  Section <a
+href="#format"></a>. The creation of a DID Document is also performed by taking
+the public key value and expanding it into DID Document. An example is given
+below that expands the ed25519 <tt>did:key</tt>
+<code>did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH</code> into its
+associated DID Document:
         </p>
 
         <pre class="example" title="A DID Document derived from a did:key">
@@ -262,6 +264,9 @@ expands the ed25519 <tt>did:key</tt> into its associated DID Document:
         <h3>Read</h3>
 
         <p>
+Reading a <tt>did:key</tt> value is a matter of deterministically expanding  the
+value to a DID Document. This process is described in Section <a
+href="#create"></a>.
         </p>
       </section>
 
@@ -269,6 +274,7 @@ expands the ed25519 <tt>did:key</tt> into its associated DID Document:
         <h3>Update</h3>
 
         <p>
+This DID Method does not support updating the DID Document.
         </p>
       </section>
 
@@ -276,6 +282,7 @@ expands the ed25519 <tt>did:key</tt> into its associated DID Document:
         <h3>Deactivate</h3>
 
         <p>
+This DID Method does not support deactivating the DID Document.
         </p>
       </section>
 
