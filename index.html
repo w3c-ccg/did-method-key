@@ -145,13 +145,13 @@ and no official endorsement should be inferred.
       <h2>Introduction</h2>
 
       <p>
-Decentralized Identifiers (DIDs) are a new type of identifier for verifiable,
-decentralized digital identity. These new identifiers are designed to enable the
-controller of a DID to prove control over it and to be implemented independently
-of any centralized registry, identity provider, or certificate authority.
-These sorts of identifiers often utilize a heavy-weight registry, such as ones
-utilizing Decentralized Ledger Technologies (DLT), to create, read, update,
-and deactivate DIDs.
+Decentralized Identifiers (DIDs) [[DID-CORE]] are a new type of identifier for
+verifiable, decentralized digital identity. These new identifiers are designed
+to enable the controller of a DID to prove control over it and to be implemented
+independently of any centralized registry, identity provider, or certificate
+authority. These sorts of identifiers often utilize a heavy-weight registry,
+such as ones utilizing Decentralized Ledger Technologies (DLT), to create, read,
+update, and deactivate DIDs.
       </p>
 
       <p>
@@ -178,7 +178,39 @@ implementers might want to be aware of when implementing.
       <h2>The did:key Format</h2>
 
       <p>
+The format for the <tt>did:key</tt> method conforms to the [[DID-CORE]]
+specification and is simple. It consists of the <code>did:key</code> prefix,
+followed by a Multibase [[MULTIBASE]] base58-btc encoded value that is a
+concatenation of the Multicodec [[MULTICODEC]] identifier for the public key
+type and the raw bytes associated with the public key format.
       </p>
+
+      <p>
+The ABNF for the key format is described below:
+      </p>
+
+      <pre>
+did-key-format := did:key:&lt;mb-value>
+mb-value       := z[a-km-zA-HJ-NP-Z1-9]+
+      </pre>
+
+      <p>
+Alternatively, the encoding rules can also be thought of as the application
+of a series of transformation functions on the raw public key bytes:
+      </p>
+
+      <tt>
+did-key-format := did:key:MULTIBASE(base58-btc, MULTICODEC(public-key-type, raw-public-key-bytes))
+      </tt>
+
+      <p>
+A simple example of a valid Ed25519 <tt>did:key</tt> DID is:
+      </p>
+
+      <pre class="example" title="A simple Ed25519 did:key value">
+did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH
+      </pre>
+
     </section>
 
     <section class="normative">

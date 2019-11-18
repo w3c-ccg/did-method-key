@@ -76,6 +76,26 @@ var ccg = {
       status: "CG-DRAFT",
       publisher: "Digital Verification Community Group"
     },
+    "MULTIBASE": {
+      title: "Multibase",
+      href: "https://tools.ietf.org/html/draft-multiformats-multibase",
+      authors: [
+        "Juan Benet",
+        "Manu Sporny"
+      ],
+      status: "Independent Draft",
+      publisher: "IETF"
+    },
+    "MULTICODEC": {
+      title: "Multibase",
+      href: "https://github.com/multiformats/multicodec/blob/master/README.md",
+      authors: [
+        "Juan Benet",
+        "Manu Sporny"
+      ],
+      status: "Independent Draft",
+      publisher: "IETF"
+    },
     "CL-SIGNATURES": {
       title: "A Signature Scheme with Efficient Protocols",
       href: "http://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf",
