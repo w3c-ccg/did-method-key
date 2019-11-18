@@ -175,7 +175,7 @@ implementers might want to be aware of when implementing.
     </section>
 
     <section class="normative">
-      <h2>The did:key Format</h2>
+      <h2 id="format">The did:key Format</h2>
 
       <p>
 The format for the <tt>did:key</tt> method conforms to the [[DID-CORE]]
@@ -217,13 +217,45 @@ did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH
       <h2>Operations</h2>
 
       <p>
+The following section outlines the DID operations for the <tt>did:key</tt>
+method. Implementers might note that this DID Method is purely generative,
+requiring no look ups in a registry. Since <tt>did:key</tt> values are not
+stored in any registry, they cannot be updated or deactivated.
       </p>
 
       <section class="normative">
         <h3>Create</h3>
 
         <p>
+Creating a <tt>did:key</tt> value consists of creating a cryptographic key pair
+and encoding the public key using the format provided in <a href="#format"></a>.
+The creation of a DID Document is also performed by taking the public key
+value and expanding it into DID Document. An example is given below that
+expands the ed25519 <tt>did:key</tt> into its associated DID Document:
         </p>
+
+        <pre class="example" title="A DID Document derived from a did:key">
+{
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+  "publicKey": [{
+    "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+    "type": "Ed25519VerificationKey2018",
+    "controller": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+    "publicKeyBase58": "B12NYF8RrR3h41TDCTJojY59usg3mbtbjnFs7Eud1Y6u"
+  }],
+  "authentication": [ "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH" ],
+  "assertionMethod": [ "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH" ],
+  "capabilityDelegation": [ "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH" ],
+  "capabilityInvocation": [ "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH" ],
+  "keyAgreement": [{
+    "id": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH#XX96SBY4",
+    "type": "X25519KeyAgreementKey2019",
+    "controller": "did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
+    "publicKeyBase58": "JhNWeSVLMYccCk7iopQW4guaSJTojqpMEELgSLhKwRr"
+  }]
+}
+        </pre>
       </section>
 
       <section class="normative">
