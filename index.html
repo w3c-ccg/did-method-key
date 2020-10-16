@@ -53,7 +53,9 @@
           { name: "Dmitri Zagidulin", url: "https://www.linkedin.com/in/dzagidulin/",
             company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/"},
           { name: "Dave Longley", url: "https://github.com/dlongley",
-            company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/"}
+            company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/"},
+          { name: "Orie Steele", url: "https://github.com/OR13",
+            company: "Transmute", companyURL: "https://transmute.industries/"}
         ],
         // authors, add as many as you like.
         // This is optional, uncomment if you have authors as well as editors.
@@ -284,6 +286,78 @@ This DID Method does not support updating the DID Document.
         <p>
 This DID Method does not support deactivating the DID Document.
         </p>
+      </section>
+
+    </section>
+
+    <section class="informative">
+      <h2>Test Vectors</h2>
+      <p>For a full list of test vectors see <a href="/test-vectors">test vectors</a>.</p>
+      
+      <section class="informative">
+        <h3>Ed25519 / X25519</h2>
+          <p>These DID always start with <code>z6Mk</code>.</p>
+        <pre class="example">
+          did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp
+          did:key:z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG
+          did:key:z6MknGc3ocHs3zdPiJbnaaqDi58NGb4pk1Sp9WxWufuXSdxf
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>X25519</h2>
+          <p>These DID always start with <code>z6LS</code>.</p>
+        <pre class="example">
+          did:key:z6LSeu9HkTHSfLLeUs2nnzUSNedgDUevfNQgQjQC23ZCit6F
+          did:key:z6LStiZsmxiK4odS4Sb6JmdRFuJ6e1SYP157gtiCyJKfrYha
+          did:key:z6LSoMdmJz2Djah2P4L9taDmtqeJ6wwd2HhKZvNToBmvaczQ
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>Secp256k1</h2>
+          <p>These DID always start with <code>zQ3s</code>.</p>
+        <pre class="example">
+          did:key:zQ3shokFTS3brHcDQrn82RUDfCZESWL1ZdCEJwekUDPQiYBme
+          did:key:zQ3shtxV1FrJfhqE1dvxYRcCknWNjHc3c5X1y3ZSoPDi2aur2
+          did:key:zQ3shZc2QzApp2oymGvQbzP8eKheVshBHbU4ZYjeXqwSKEn6N
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>BLS 12381</h2>
+          <p>These DID always start with <code>zUC7</code>.</p>
+        <pre class="example">
+          did:key:zUC7K4ndUaGZgV7Cp2yJy6JtMoUHY6u7tkcSYUvPrEidqBmLCTLmi6d5WvwnUqejscAkERJ3bfjEiSYtdPkRSE8kSa11hFBr4sTgnbZ95SJj19PN2jdvJjyzpSZgxkyyxNnBNnY
+          did:key:zUC7KKoJk5ttwuuc8pmQDiUmtckEPTwcaFVZe4DSFV7fURuoRnD17D3xkBK3A9tZqdADkTTMKSwNkhjo9Hs6HfgNUXo48TNRaxU6XPLSPdRgMc15jCD5DfN34ixjoVemY62JxnW
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>P-256</h2>
+          <p>These DID always start with <code>zXwpB</code>.</p>
+        <pre class="example">
+          did:key:zXwpBnMdCm1cLmKuzgESn29nqnonp1ioqrQMRHNsmjMyppzx8xB2pv7cw8q1PdDacSrdWE3dtB9f7Nxk886mdzNFoPtY
+          did:key:zXwpBzzzpUofYSorhHTeGwKWCKTBvUkNEkgHtCivNyQTixsyGmHiQfkjGtum3SxJxsetka9rp3VB2gkKF5zchhwHNEfC
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>P-384</h2>
+          <p>These DID always start with <code>zACH</code>.</p>
+        <pre class="example">
+          did:key:zACHdaSNFRwUmdgukpbVe9iGeDcqgs8ad5aTorGvwW65PLKBopzGCkggJETpAGALEyY6wmv684bxYLfuKNCdGVUxRAh1BiY8tuZKP7mrz24D7t2hp2Zhg1JToiRCQFfghfPFKQnJ
+          did:key:zACHck3hF2p6keLoo4f4FYi83JxyU4gJkY9uQhE8xcfdvFfqN6VD7EnUjTsun2wnij6zAhFZehwZhaWPhRAFsjD1CVBTNdK2qz24KdUksRVANHcX7MvzQsmvE9Ktk8PjeEqpLxAJ
+        </pre>
+      </section>
+
+      <section class="informative">
+        <h3>P-521</h2>
+          <p>These DID always start with <code>zJss7x</code>.</p>
+        <pre class="example">
+          did:key:zJss7xLxvT5rcYS7frBJtToymirNayBALM2avZCe1anYqfZbzNCtqAsR3zEpVs7SdJtD8VzZMDE68L6eYu73bRJi8KjHvtTwkLyzAz1Pa6AuMhhmb9dz1PdUtT2wjcL6rByp5FZnwHfMEJtg9tW8wEgxYZGDVSEFecbaSc3vah97kCDh6FuggqB1B
+          did:key:zJss7xGbDiKzPpjeRPnxiDVAH3PFqqCiJ4P34RSDjw35EG2Dk6Phnr5GnhsUa4KVamJsf4BP5iCPfCdkd9xKsnNaMbr6YYcY4ueSTZgLGwtgM5815bZD9s3btuMn13eiBxDdsWmEtuLQgjbN9SQ83Wef3Z1hK9Lk96Z7yd6f23eeSrWiahTsY3rjJ
+        </pre>
       </section>
 
     </section>
