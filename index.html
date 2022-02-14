@@ -362,7 +362,10 @@ This DID Method does not support deactivating the DID Document.
       <section class="informative">
         <h3>RSA</h3>
 
-        <section class="informative">
+        <p>See also <a href="#rsa-repr">RSA Public Key
+          Representation</a>.</p>
+
+        <section class="informative" id="rsa-2048">
           <h4>2048-bit</h4>
           <p>These DID always start with <code>z4MX</code>.</p>
           <pre class="example">
@@ -370,7 +373,7 @@ This DID Method does not support deactivating the DID Document.
           </pre>
         </section>
 
-        <section class="informative">
+        <section class="informative" id="rsa-4096">
           <h4>4096-bit</h4>
           <p>These DID always start with <code>zgg</code>.</p>
           <pre class="example">
@@ -440,6 +443,50 @@ strongly discouraged.
       </section>
 
     </section>
+
+  </section>
+
+  <section class="appendix informative" id="rsa-repr">
+    <h2>RSA Public Key Representation</h2>
+    <p>An RSA public key for did:key is represented as a DER-encoded
+    <code>RSAPublicKey</code> data structure as specified in
+    <a href="https://datatracker.ietf.org/doc/html/rfc3447#appendix-A.1.1">RFC
+      3447 (PKCS #1)</a>, as registered in the Multicodec table (code
+    <code>0x1205</code>).</p>
+
+    <p>DER is a canonical encoding of ASN.1 values. For the aid of implementers
+      who do not fully support ASN.1/DER, the following subsections describe the
+      public key representation for RSA public keys that use some common
+      parameters.</p>
+
+    <section class="informative">
+    <h4>2048-bit modulus, public exponent 65537</h4>
+    A public key with 2048-bit modulus <em>modulus</em> and public exponent
+    65537 is represented by the concatenation of the following octet sequences:
+    <ul>
+      <li><code>[48, 130, 1, 10, 2, 130, 1, 1, 0]</code></li>
+      <li><code>[0]</code> <strong>if and only if</strong> the
+        most-significant bit of <em>modulus</em> is set.</li>
+      <li><em>modulus</em> (256 octets)</li>
+      <li><code>[2, 3, 1, 0, 1]</code></li>
+    </ul>
+    <p>See also the example <a href="#rsa-2048">2048-bit test vector</a>.</p>
+    </section>
+
+    <section class="informative">
+    <h4>4096-bit modulus, public exponent 65537</h4>
+    A public key with 4096-bit modulus <em>modulus</em> and public exponent
+    65537 is represented by the concatenation of the following octet sequences:
+    <ul>
+      <li><code>[48, 130, 2, 10, 2, 130, 2, 1, 0]</code></li>
+      <li><code>[0]</code> <strong>if and only if</strong> the
+        most-significant bit of <em>modulus</em> is set.</li>
+      <li><em>modulus</em> (512 octets)</li>
+      <li><code>[2, 3, 1, 0, 1]</code></li>
+    </ul>
+    <p>See also the example <a href="#rsa-4096">4096-bit test vector</a>.</p>
+    </section>
+  </section>
 
   <section class="appendix informative">
     <h2>Acknowledgements</h2>
