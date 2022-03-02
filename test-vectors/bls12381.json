@@ -15,7 +15,7 @@
         }
       ],
       "id": "did:key:zUC7K4ndUaGZgV7Cp2yJy6JtMoUHY6u7tkcSYUvPrEidqBmLCTLmi6d5WvwnUqejscAkERJ3bfjEiSYtdPkRSE8kSa11hFBr4sTgnbZ95SJj19PN2jdvJjyzpSZgxkyyxNnBNnY",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#zUC7K4ndUaGZgV7Cp2yJy6JtMoUHY6u7tkcSYUvPrEidqBmLCTLmi6d5WvwnUqejscAkERJ3bfjEiSYtdPkRSE8kSa11hFBr4sTgnbZ95SJj19PN2jdvJjyzpSZgxkyyxNnBNnY",
           "type": "Bls12381G2Key2020",
@@ -53,7 +53,7 @@
         }
       ],
       "id": "did:key:zUC77uxiMKceQoxciSy1xgk3nvP8c8NZXDnaY1xsXZaU5UmsZdnwStUke8Ca8zAdPX3MQTHEMhDTCgfdGU7UrY4RRdVhqZp8FaAaoaXFEVp2ZAM7oj3P45BuTCfc3t9FEGBAEQY",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#zUC77uxiMKceQoxciSy1xgk3nvP8c8NZXDnaY1xsXZaU5UmsZdnwStUke8Ca8zAdPX3MQTHEMhDTCgfdGU7UrY4RRdVhqZp8FaAaoaXFEVp2ZAM7oj3P45BuTCfc3t9FEGBAEQY",
           "type": "Bls12381G2Key2020",
@@ -91,7 +91,7 @@
         }
       ],
       "id": "did:key:zUC7KKoJk5ttwuuc8pmQDiUmtckEPTwcaFVZe4DSFV7fURuoRnD17D3xkBK3A9tZqdADkTTMKSwNkhjo9Hs6HfgNUXo48TNRaxU6XPLSPdRgMc15jCD5DfN34ixjoVemY62JxnW",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#zUC7KKoJk5ttwuuc8pmQDiUmtckEPTwcaFVZe4DSFV7fURuoRnD17D3xkBK3A9tZqdADkTTMKSwNkhjo9Hs6HfgNUXo48TNRaxU6XPLSPdRgMc15jCD5DfN34ixjoVemY62JxnW",
           "type": "Bls12381G2Key2020",
@@ -129,7 +129,7 @@
         }
       ],
       "id": "did:key:zUC7FB43ErjeTPiBLZ8wWT3aBTL7QnJ6AAZh9opgV5dKkw291mC23yTnKQ2pTcSgLbdKnVJ1ARn6XrwxWqvFg5dRFzCjwSg1j35nRgs5c2nbqkJ4auPTyPtkJ3xcABRNWaDX6QU",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#zUC7FB43ErjeTPiBLZ8wWT3aBTL7QnJ6AAZh9opgV5dKkw291mC23yTnKQ2pTcSgLbdKnVJ1ARn6XrwxWqvFg5dRFzCjwSg1j35nRgs5c2nbqkJ4auPTyPtkJ3xcABRNWaDX6QU",
           "type": "Bls12381G2Key2020",
@@ -167,7 +167,7 @@
         }
       ],
       "id": "did:key:zUC7FNFB7UinoJ5tqkeEELWLsytHBdHpwQ7wLVFAYRT6vqdr5uC3JPK6BVNNByj4KxvVKXoirT7VuqptSznjRCgvr7Ksuk42zyFw1GJSYNQSKCpjVcrZXoPUbR1P6zHmr97mVdA",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#zUC7FNFB7UinoJ5tqkeEELWLsytHBdHpwQ7wLVFAYRT6vqdr5uC3JPK6BVNNByj4KxvVKXoirT7VuqptSznjRCgvr7Ksuk42zyFw1GJSYNQSKCpjVcrZXoPUbR1P6zHmr97mVdA",
           "type": "Bls12381G2Key2020",

@@ -22,7 +22,7 @@
         }
       ],
       "id": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
           "type": "Ed25519VerificationKey2018",
@@ -71,7 +71,7 @@
         }
       ],
       "id": "did:key:z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG",
           "type": "Ed25519VerificationKey2018",
@@ -120,7 +120,7 @@
         }
       ],
       "id": "did:key:z6MknGc3ocHs3zdPiJbnaaqDi58NGb4pk1Sp9WxWufuXSdxf",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#z6MknGc3ocHs3zdPiJbnaaqDi58NGb4pk1Sp9WxWufuXSdxf",
           "type": "Ed25519VerificationKey2018",
@@ -169,7 +169,7 @@
         }
       ],
       "id": "did:key:z6MkvqoYXQfDDJRv8L4wKzxYeuKyVZBfi9Qo6Ro8MiLH3kDQ",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#z6MkvqoYXQfDDJRv8L4wKzxYeuKyVZBfi9Qo6Ro8MiLH3kDQ",
           "type": "Ed25519VerificationKey2018",
@@ -218,7 +218,7 @@
         }
       ],
       "id": "did:key:z6MkwW6aqMnjgrhJXFUko3NnZPGzVpkNzhYK7yEhnsibmLwL",
-      "publicKey": [
+      "verificationMethod": [
         {
           "id": "#z6MkwW6aqMnjgrhJXFUko3NnZPGzVpkNzhYK7yEhnsibmLwL",
           "type": "Ed25519VerificationKey2018",
