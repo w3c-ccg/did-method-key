@@ -178,5 +178,54 @@
         "did:key:zUC7FNFB7UinoJ5tqkeEELWLsytHBdHpwQ7wLVFAYRT6vqdr5uC3JPK6BVNNByj4KxvVKXoirT7VuqptSznjRCgvr7Ksuk42zyFw1GJSYNQSKCpjVcrZXoPUbR1P6zHmr97mVdA#zUC7FNFB7UinoJ5tqkeEELWLsytHBdHpwQ7wLVFAYRT6vqdr5uC3JPK6BVNNByj4KxvVKXoirT7VuqptSznjRCgvr7Ksuk42zyFw1GJSYNQSKCpjVcrZXoPUbR1P6zHmr97mVdA"
       ]
     }
+  },
+  "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk": {
+    "verificationKeyPair": {
+      "id": "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty",
+      "type": "JsonWebKey2020",
+      "controller": "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk",
+      "publicKeyJwk": {
+        "kty": "EC",
+        "crv": "BLS12381_G1",
+        "x": "im0OQGMTkh4YEhAl16hQwUQTcOaRqIqThqtSwksFK7WaH6Qywypmc3VIDyydmYTe"
+      },
+      "privateKeyJwk": {
+        "kty": "EC",
+        "crv": "BLS12381_G1",
+        "x": "im0OQGMTkh4YEhAl16hQwUQTcOaRqIqThqtSwksFK7WaH6Qywypmc3VIDyydmYTe",
+        "d": "S7Z1TuL05WHge8od0_mW8b3sRM747caCffsLwS6JZ-c"
+      }
+    },
+    "didDocument": {
+      "@context": [
+        "https://www.w3.org/ns/did/v1",
+        "https://w3id.org/security/suites/jws-2020/v1"
+      ],
+      "id": "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk",
+      "verificationMethod": [
+        {
+          "id": "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty",
+          "type": "JsonWebKey2020",
+          "controller": "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk",
+          "publicKeyJwk": {
+            "kty": "EC",
+            "crv": "BLS12381_G1",
+            "x": "im0OQGMTkh4YEhAl16hQwUQTcOaRqIqThqtSwksFK7WaH6Qywypmc3VIDyydmYTe"
+          }
+        }
+      ],
+      "assertionMethod": [
+        "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty"
+      ],
+      "authentication": [
+        "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty"
+      ],
+      "capabilityInvocation": [
+        "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty"
+      ],
+      "capabilityDelegation": [
+        "did:key:z5TcCmGLu7HrkT5FTnejDTKcH11LPMQLXMPHTRyzY4KdRvqpPLprH7s1ddWFD38cAkZoiDtofUmJVZyEweUTfwjG5H3znk3ir4tzmuDBUSNbNQ7U6jJqj5bkQLKRaQB1bpFJKGLEq3EBwsfPutL5D7p78kFeLNHznqbf5oGpik7ScaDbGLaTLh1Jtadi6VmPNNd44Cojk#z3tEEysHYz5kkgpfDAByfDVgAuvtSFLHSqoMWmmSZBU1LZtN2sDsAS6RVQSevfxv39kyty"
+      ]
+    }
   }
 }

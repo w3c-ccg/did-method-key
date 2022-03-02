@@ -328,5 +328,44 @@
         "did:key:z2J9gcGdb2nEyMDmzQYv2QZQcM1vXktvy1Pw4MduSWxGabLZ9XESSWLQgbuPhwnXN7zP7HpTzWqrMTzaY5zWe6hpzJ2jnw4f#z2J9gcGdb2nEyMDmzQYv2QZQcM1vXktvy1Pw4MduSWxGabLZ9XESSWLQgbuPhwnXN7zP7HpTzWqrMTzaY5zWe6hpzJ2jnw4f"
       ]
     }
+  },
+  "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb": {
+    "verificationMethod": {
+      "id": "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb",
+      "type": "P256Key2021",
+      "controller": "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb",
+      "publicKeyBase58": "ekVhkcBFq3w7jULLkBVye6PwaTuMbhJYuzwFnNcgQAPV",
+      "privateKeyBase58": "9p4VRzdmhsnq869vQjVCTrRry7u4TtfRxhvBFJTGU2Cp"
+    },
+    "didDocument": {
+      "@context": [
+        "https://www.w3.org/ns/did/v1",
+        "https://w3id.org/security/suites/multikey-2021/v1"
+      ],
+      "id": "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb",
+      "verificationMethod": [
+        {
+          "id": "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb",
+          "type": "P256Key2021",
+          "controller": "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb",
+          "publicKeyBase58": "ekVhkcBFq3w7jULLkBVye6PwaTuMbhJYuzwFnNcgQAPV"
+        }
+      ],
+      "assertionMethod": [
+        "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb"
+      ],
+      "authentication": [
+        "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb"
+      ],
+      "capabilityInvocation": [
+        "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb"
+      ],
+      "capabilityDelegation": [
+        "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb"
+      ],
+      "keyAgreement": [
+        "did:key:zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb#zDnaeTiq1PdzvZXUaMdezchcMJQpBdH2VN4pgrrEhMCCbmwSb"
+      ]
+    }
   }
 }
