@@ -113,6 +113,9 @@ pre .comment {
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+ol.algorithm { counter-reset:numsection; list-style-type: none; }
+ol.algorithm li { margin: 0.5em 0; }
+ol.algorithm li:before { font-weight: bold; counter-increment: numsection; content: counters(numsection, ".") ") "; }
     </style>
   </head>
   <body>
@@ -265,6 +268,100 @@ associated DID Document:
             "keyAgreement": ["did:key:z6MkicdicToW5HbxPP7zZV1H7RHvXgRMhoujWAF2n5WQkdd2#z6LSni4ALZW58RuBPizpNeTK3HGfZfSuE3zcxeBubnrssYuh"]
           }
         </pre>
+
+        <section class="normative">
+          <h4>Expansion Algorithm</h4>
+
+          <p>
+The following algorithm can be used for expanding a did:key identifier to a DID
+Document. An <em>identifier</em> and <em>options</em> are the required inputs. A
+<em>document</em> is the resulting output.
+          </p>
+
+          <ol class="algorithm">
+            <li>
+Initialize <em>document</em> to an empty object.
+            </li>
+            <li>
+Using a colon (`:`) as the delimiter, split the <em>identifier</em> into its
+components: a <em>scheme</em>, a <em>method</em>, a <em>version</em>, and a
+<em>multibase value</em>. If there are only three components set the
+<em>version</em> to the string value `1` and use the last value as the
+<em>multibase value</em>.
+            </li>
+            <li>
+Check the validity of the input <em>identifier</em>. The <em>scheme</em> MUST be
+the value `did`. The <em>method</em> MUST be the value `key`. The
+<em>version</em> MUST be convertible to a positive integer value. The
+<em>multibase value</em> MUST be a string and begin with the letter `z`. If any
+of these requirements fail, an INVALID_DID error MUST be raised.
+            </li>
+            <li>
+Decode <em>multibase value</em> using the base58-btc multibase alphabet and set
+<em>multicodec value</em> to the multicodec header for the decoded value and
+the <em>raw public key bytes</em> to the bytes remaining after the multicodec
+header. Implementers are cautioned to ensure that <em>multicodec value</em>
+is set to the result after performing varint decoding.
+            </li>
+            <li>
+Initialize the <em>signature verification method</em> to the result of passing
+<em>options</em> to the <a href="#signature-method-expansion-algorithm"></a>.
+            </li>
+            <li>
+Initialize the <em>encryption verification method</em> to the result of passing
+<em>options</em> to the <a href="#encryption-method-expansion-algorithm"></a>.
+            </li>
+            <li>
+Set the `id` property in <em>document</em> to <em>identifier</em>.
+            </li>
+            <li>
+Initialize the `verificationMethod` property in <em>document</em> to an array
+where the first value is the <em>signature verification method</em> and the
+second value is the <em>encryption verification method</em>.
+            </li>
+            <li>
+Initialize the `authentication` property in <em>document</em> to an array
+where the first item is the value of he `id` property in
+<em>signature verification method</em>.
+            </li>
+            <li>
+Initialize the `assertionMethod` property in <em>document</em> to an array
+where the first item is the value of he `id` property in
+<em>signature verification method</em>.
+            </li>
+            <li>
+Initialize the `capabilityInvocation` property in <em>document</em> to an array
+where the first item is the value of he `id` property in
+<em>signature verification method</em>.
+            </li>
+            <li>
+Initialize the `capabilityDelegation` property in <em>document</em> to an array
+where the first item is the value of he `id` property in
+<em>signature verification method</em>.
+            </li>
+            <li>
+Initialize the `keyAgreement` property in <em>document</em> to an array
+where the first item is the value of he `id` property in
+<em>encryption verification method</em>.
+            </li>
+            <li>
+Return <em>document</em>.
+            </li>
+          </ol>
+          <p>
+Any alternative algorithm can be used that produces an equivalent result to the
+output from the algorithm above.
+          </p>
+        </section>
+
+        <section class="normative">
+          <h4>Signature Method Expansion Algorithm</h4>
+        </section>
+
+        <section class="normative">
+          <h4>Encryption Method Expansion Algorithm</h4>
+        </section>
+
       </section>
 
       <section class="normative">
@@ -299,7 +396,7 @@ This DID Method does not support deactivating the DID Document.
       <h2>Test Vectors</h2>
       <!-- No way to do directory listing on github pages short of generating them client side :-(  Not sure if there's a better way to do this -->
       <p>For a full list of test vectors see <a href="https://github.com/w3c-ccg/did-method-key/tree/master/test-vectors">test vectors</a>.</p>
-      
+
       <section class="informative">
         <h3>Ed25519 / X25519</h3>
           <p>These DID always start with <code>z6Mk</code>.</p>
