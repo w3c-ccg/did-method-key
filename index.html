@@ -311,8 +311,7 @@ Set the `id` property in <em>document</em> to <em>identifier</em>.
             </li>
             <li>
 Initialize the `verificationMethod` property in <em>document</em> to an array
-where the first value is the <em>signature verification method</em> and the
-second value is the <em>encryption verification method</em>.
+where the first value is the <em>signature verification method</em>.
             </li>
             <li>
 Initialize the `authentication`, `assertionMethod`, `capabilityInvocation`,
@@ -321,9 +320,11 @@ where the first item is the value of the `id` property in
 <em>signature verification method</em>.
             </li>
             <li>
-Initialize the `keyAgreement` property in <em>document</em> to an array
-where the first item is the value of the `id` property in
-<em>encryption verification method</em>.
+If <em>options</em> `disableKeyAgreement` is not set to `true`,
+add the <em>encryption verification method</em> value to the
+`verificationMethod` array and initialize the `keyAgreement` property in
+<em>document</em> to an array where the first item is the value of the `id`
+property in <em>encryption verification method</em>.
             </li>
             <li>
 Return <em>document</em>.
