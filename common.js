@@ -172,6 +172,20 @@ var ccg = {
       authors: ['Gregg Kellogg', 'Manu Sporny', 'Dave Longley', 'Markus Lanthaler', 'Pierre-Antoine Champin', 'Niklas Lindström'],
       status: 'WD',
       publisher: 'W3C JSON-LD 1.1 Working Group'
+    },
+    'THORMARKER': {
+      title: 'On using the same key pair for Ed25519 and an X25519 based KEM',
+      href: 'https://eprint.iacr.org/2021/509.pdf',
+      authors: ['Erik Thormarker'],
+      status: 'Internet-Draft',
+      publisher: 'Cryptology ePrint Archive'
+    },
+    'OSCORE': {
+      title: 'Group OSCORE - Secure Group Communication for CoAP',
+      href: 'https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm',
+      authors: ['M. Tiloca', 'G. Selander', 'F. Palombini', 'J. Mattsson', 'J. Park'],
+      status: 'Internet-Draft',
+      publisher: 'Internet Engineering Task Force (IETF)'
     }
   }
 };
