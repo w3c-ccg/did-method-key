@@ -311,7 +311,8 @@ Initialize the <em>encryptionVerificationMethod</em> to the result of passing
 <a href="#encryption-method-creation-algorithm"></a>.
             </li>
             <li>
-Set the `id` property in <em>document</em> to <em>identifier</em>.
+Set <em>document.id</em> to <em>identifier</em>. If <em>document.id</em> is not
+a valid DID, an INVALID_DID error MUST be raised.
             </li>
             <li>
 Initialize the `verificationMethod` property in <em>document</em> to an array
@@ -418,6 +419,8 @@ INVALID_PUBLIC_KEY_LENGTH error MUST be raised.
             <li>
 Set the <em>verificationMethod.id</em> value by concatenating
 <em>identifier</em>, a hash character (`#`), and the <em>multicodecValue</em>.
+If <em>verificationMethod.id</em> is not a valid DID URL, an INVALID_DID_URL
+error MUST be raised.
             </li>
             <li>
 Set the <em>publicKeyFormat</em> value to the <em>options.publicKeyFormat</em>
@@ -437,6 +440,8 @@ Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             </li>
             <li>
 Set <em>verificationMethod.controller</em> to the <em>identifier</em> value.
+If <em>verificationMethod.controller</em> is not a valid DID, an INVALID_DID
+error MUST be raised.
             </li>
             <li>
 If <em>publicKeyFormat</em> is `Multikey` or `Ed25519VerificationKey2020`,
@@ -552,6 +557,8 @@ the <em>rawPublicKeyBytes</em>.
             <li>
 Set the <em>verificationMethod.id</em> value by concatenating
 <em>identifier</em>, a hash character (`#`), and the <em>multibaseValue</em>.
+If <em>verificationMethod.id</em> is not a valid DID URL, an INVALID_DID_URL
+error MUST be raised.
             </li>
             <li>
 Set the <em>publicKeyFormat</em> value to the <em>options.publicKeyFormat</em>
@@ -570,7 +577,9 @@ If <em>options.enableExperimentalPublicKeyTypes</em> is set to `false` and
 Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             </li>
             <li>
-Set <em>verificationMethod.controller</em> to <em>identifier</em>.
+Set <em>verificationMethod.controller</em> to <em>identifier</em>. If
+<em>verificationMethod.controller</em> is not a valid DID, an
+INVALID_DID error MUST be raised.
             </li>
             <li>
 If <em>publicKeyFormat</em> is `Multikey` or `X25519KeyAgreementKey2020`,
