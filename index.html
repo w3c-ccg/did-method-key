@@ -276,10 +276,12 @@ associated DID Document:
 The following algorithm can be used for expanding a did:key identifier to a DID
 Document. An <em>identifier</em> and <em>options</em> are the required inputs.
 Implementations are expected to set a reasonable default for the
-<em>options.publicKeyFormat</em> value such as `JsonWebKey2020` or `Multikey`. The
-<em>options.enableExperimentalPublicKeyTypes</em> value SHOULD be set to
-`false`. Defaults MAY be overridden by the caller of this algorithm.
-A <em>document</em> is the resulting output.
+<em>options.publicKeyFormat</em> value such as `JsonWebKey2020` or `Multikey`.
+The <em>options.enableExperimentalPublicKeyTypes</em> value SHOULD be set to
+`false`. The <em>options.defaultContext</em> value SHOULD be set to an array
+where the first element is the string value `https://www.w3.org/ns/did/v1`.
+Defaults MAY be overridden by the caller of this algorithm. A <em>document</em>
+is the resulting output.
           </p>
 
           <ol class="algorithm">
@@ -315,7 +317,7 @@ where the first value is the <em>signatureVerificationMethod</em>.
             </li>
             <li>
 Initialize the `authentication`, `assertionMethod`, `capabilityInvocation`,
-and the `capabilityDelegation` property in <em>document</em> to an array
+and the `capabilityDelegation` properties in <em>document</em> to an array
 where the first item is the value of the `id` property in
 <em>signatureVerificationMethod</em>.
             </li>
@@ -337,6 +339,11 @@ the first item is the value of the `id` property in
 <em>encryptionVerificationMethod</em>.
                 </li>
               </ol>
+            </li>
+            <li>
+Initialize the `@context` property in <em>document</em> to the result of
+passing <em>document</em> and <em>options</em> to the
+<a href="#context-creation-algorithm"></a>.
             </li>
             <li>
 Return <em>document</em>.
@@ -647,6 +654,65 @@ Set <em>rawPublicKeyBytes</em> in <em>publicEncryptionKey</em> to
             </li>
             <li>
 Return <em>publicEncryptionKey</em>.
+            </li>
+          </ol>
+        </section>
+
+        <section class="normative">
+          <h4>Context Creation Algorithm</h4>
+
+          <p>
+The following algorithm is used to generate the array for the `@context`
+property in the DID Document. A <em>document</em> and <em>options</em> are the
+required inputs. A <em>contextArray</em> is the output.
+          </p>
+
+          <ol class="algorithm">
+            <li>
+Set <em>contextArray</em> to an array that is initialized to
+<em>options.defaultContext</em>.
+            </li>
+            <li>
+For every object in <em>document.verificationMethod</em>, add a string value
+to the <em>contextArray</em> based on the object `type` value, according to
+the following table:
+              <table class="simple">
+                <thead>
+                  <th>`type` value</th>
+                  <th>Context URL</th>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>`Ed25519VerificationKey2020`</td>
+                    <td>
+https://w3id.org/security/suites/ed25519-2020/v1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>`X25519KeyAgreementKey2020`</td>
+                    <td>
+https://w3id.org/security/suites/x25519-2020/v1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>`JsonWebKey2020`</td>
+                    <td>
+https://w3id.org/security/suites/jws-2020/v1
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>`Multikey`</td>
+                    <td class="issue">
+There is currently no JSON-LD Context that defines the Multikey type. This is
+expected to be defined by the VC2WG in 2022 or 2023.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+Return <em>contextArray</em>.
             </li>
           </ol>
         </section>
