@@ -276,7 +276,7 @@ associated DID Document:
 The following algorithm can be used for expanding a did:key identifier to a DID
 Document. An <em>identifier</em> and <em>options</em> are the required inputs.
 Implementations are expected to set a reasonable default for the
-<em>options</em> `type` value such as `JsonWebKey2020` or `Multikey`. The
+<em>options</em> `publicKeyFormat` value such as `JsonWebKey2020` or `Multikey`. The
 <em>options</em> `enableExperimentalPublicKeyTypes` value SHOULD be set to
 `false`. Defaults MAY be overridden by the caller of this algorithm.
 A <em>document</em> is the resulting output.
@@ -420,7 +420,8 @@ Set the <em>verification method</em> `id` value by concatenating
 <em>identifier</em>, a hash character (`#`), and the <em>multicodec value</em>.
             </li>
             <li>
-Set the <em>key encoding type</em> value to the <em>options</em> `type` value.
+Set the <em>key encoding type</em> value to the <em>options</em>
+`publicKeyFormat` value.
             </li>
             <li>
 If <em>key encoding type</em> is not known to the implementation, an
@@ -553,7 +554,8 @@ Set the <em>verification method</em> `id` value by concatenating
 <em>identifier</em>, a hash character (`#`), and the <em>multibase value</em>.
             </li>
             <li>
-Set the <em>key encoding type</em> value to the <em>options</em> `type` value.
+Set the <em>key encoding type</em> value to the <em>options</em>
+`publicKeyFormat` value.
             </li>
             <li>
 If <em>key encoding type</em> is not known to the implementation, an
