@@ -276,8 +276,8 @@ associated DID Document:
 The following algorithm can be used for expanding a did:key identifier to a DID
 Document. An <em>identifier</em> and <em>options</em> are the required inputs.
 Implementations are expected to set a reasonable default for the
-<em>options</em> `publicKeyFormat` value such as `JsonWebKey2020` or `Multikey`. The
-<em>options</em> `enableExperimentalPublicKeyTypes` value SHOULD be set to
+<em>options.publicKeyFormat</em> value such as `JsonWebKey2020` or `Multikey`. The
+<em>options.enableExperimentalPublicKeyTypes</em> value SHOULD be set to
 `false`. Defaults MAY be overridden by the caller of this algorithm.
 A <em>document</em> is the resulting output.
           </p>
@@ -289,25 +289,25 @@ Initialize <em>document</em> to an empty object.
             <li>
 Using a colon (`:`) as the delimiter, split the <em>identifier</em> into its
 components: a <em>scheme</em>, a <em>method</em>, a <em>version</em>, and a
-<em>multibase value</em>. If there are only three components set the
+<em>multibaseValue</em>. If there are only three components set the
 <em>version</em> to the string value `1` and use the last value as the
-<em>multibase value</em>.
+<em>multibaseValue</em>.
             </li>
             <li>
 Check the validity of the input <em>identifier</em>. The <em>scheme</em> MUST be
 the value `did`. The <em>method</em> MUST be the value `key`. The
 <em>version</em> MUST be convertible to a positive integer value. The
-<em>multibase value</em> MUST be a string and begin with the letter `z`. If any
+<em>multibaseValue</em> MUST be a string and begin with the letter `z`. If any
 of these requirements fail, an INVALID_DID error MUST be raised.
             </li>
             <li>
-Initialize the <em>signature verification method</em> to the result of passing
-<em>identifier</em>, <em>multibase value</em>, and <em>options</em> to
+Initialize the <em>signatureVerificationMethod</em> to the result of passing
+<em>identifier</em>, <em>multibaseValue</em>, and <em>options</em> to
 <a href="#signature-method-creation-algorithm"></a>.
             </li>
             <li>
-Initialize the <em>encryption verification method</em> to the result of passing
-<em>identifier</em>, <em>multibase value</em>, and <em>options</em> to
+Initialize the <em>encryptionVerificationMethod</em> to the result of passing
+<em>identifier</em>, <em>multibaseValue</em>, and <em>options</em> to
 <a href="#encryption-method-creation-algorithm"></a>.
             </li>
             <li>
@@ -315,20 +315,20 @@ Set the `id` property in <em>document</em> to <em>identifier</em>.
             </li>
             <li>
 Initialize the `verificationMethod` property in <em>document</em> to an array
-where the first value is the <em>signature verification method</em>.
+where the first value is the <em>signatureVerificationMethod</em>.
             </li>
             <li>
 Initialize the `authentication`, `assertionMethod`, `capabilityInvocation`,
 and the `capabilityDelegation` property in <em>document</em> to an array
 where the first item is the value of the `id` property in
-<em>signature verification method</em>.
+<em>signatureVerificationMethod</em>.
             </li>
             <li>
-If <em>options</em> `disableKeyAgreement` is not set to `true`,
-add the <em>encryption verification method</em> value to the
+If <em>options.disableKeyAgreement</em> is not set to `true`,
+add the <em>encryptionVerificationMethod</em> value to the
 `verificationMethod` array and initialize the `keyAgreement` property in
 <em>document</em> to an array where the first item is the value of the `id`
-property in <em>encryption verification method</em>.
+property in <em>encryptionVerificationMethod</em>.
             </li>
             <li>
 Return <em>document</em>.
@@ -346,23 +346,23 @@ output from the algorithm above.
           <p>
 The following algorithm can be used for decoding a multibase-encoded multicodec
 value into a verification method that is suitable for verifying digital
-signatures. An <em>identifier</em>, <em>multibase value</em>, and
-<em>options</em> are the required inputs. A <em>verification method</em> is
+signatures. An <em>identifier</em>, <em>multibaseValue</em>, and
+<em>options</em> are the required inputs. A <em>verificationMethod</em> is
 the resulting output.
           </p>
 
           <ol class="algorithm">
             <li>
-Initialize <em>verification method</em> to an empty object.
+Initialize <em>verificationMethod</em> to an empty object.
             </li>
             <li>
-Set <em>multicodec value</em> and <em>raw public key bytes</em> to the result
-of passing <em>multibase value</em> and <em>options</em> to
+Set <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> to the result
+of passing <em>multibaseValue</em> and <em>options</em> to
 <a href="#decode-public-key-algorithm"></a>.
             </li>
             <li>
-Ensure the proper key length of <em>raw public key bytes</em> based on the
-<em>multicodec value</em> table provided below:
+Ensure the proper key length of <em>rawPublicKeyBytes</em> based on the
+<em>multicodecValue</em> table provided below:
               <table class="simple">
                 <thead>
                   <th>Multicodec hexadecimal value</th>
@@ -411,45 +411,45 @@ IETF RFC 8017 (PKCS #1)
                   </tr>
                 </tbody>
               </table>
-If the byte length of <em>raw public key bytes</em> does not match the expected
-public key length for the associated <em>multicodec value</em>, an
+If the byte length of <em>rawPublicKeyBytes</em> does not match the expected
+public key length for the associated <em>multicodecValue</em>, an
 INVALID_PUBLIC_KEY_LENGTH error MUST be raised.
             </li>
             <li>
-Set the <em>verification method</em> `id` value by concatenating
-<em>identifier</em>, a hash character (`#`), and the <em>multicodec value</em>.
+Set the <em>verificationMethod.id</em> value by concatenating
+<em>identifier</em>, a hash character (`#`), and the <em>multicodecValue</em>.
             </li>
             <li>
-Set the <em>key encoding type</em> value to the <em>options</em>
-`publicKeyFormat` value.
+Set the <em>publicKeyFormat</em> value to the <em>options.publicKeyFormat</em>
+value.
             </li>
             <li>
-If <em>key encoding type</em> is not known to the implementation, an
+If <em>publicKeyFormat</em> is not known to the implementation, an
 UNSUPPORTED_PUBLIC_KEY_TYPE error MUST be raised.
             </li>
             <li>
-If <em>options</em> `enableExperimentalPublicKeyTypes` is set to `false` and
-<em>key encoding type</em> is not `Multikey`, `JsonWebKey2020`, or
+If <em>options.enableExperimentalPublicKeyTypes</em> is set to `false` and
+<em>publicKeyFormat</em> is not `Multikey`, `JsonWebKey2020`, or
 `Ed25519VerificationKey2020`, an INVALID_PUBLIC_KEY_TYPE error MUST be raised.
             </li>
             <li>
-Set the <em>verification method</em> `type` to the <em>key encoding type</em>.
+Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             </li>
             <li>
-Set the <em>verification method</em> `controller` to <em>identifier</em>.
+Set <em>verificationMethod.controller</em> to the <em>identifier</em> value.
             </li>
             <li>
-If <em>key encoding type</em> is `Multikey` or `Ed25519VerificationKey2020`,
-set the <em>verification method</em> `publicKeyMultibase` value to
-<em>multibase value</em>.
+If <em>publicKeyFormat</em> is `Multikey` or `Ed25519VerificationKey2020`,
+set the <em>verificationMethod.publicKeyMultibase</em> value to
+<em>multibaseValue</em>.
             <li>
-If <em>key encoding type</em> is `JsonWebKey2020`, set the
-<em>verification method</em> `publicKeyJwk` value to the result of
-passing <em>multicodec value</em> and <em>raw public key bytes</em> to
+If <em>publicKeyFormat</em> is `JsonWebKey2020`, set the
+<em>verificationMethod.publicKeyJwk</em> value to the result of
+passing <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> to
 <a href="#encode-jwk-algorithm"></a>.
             </li>
             <li>
-Return <em>verification method</em>.
+Return <em>verificationMethod</em>.
             </li>
           </ol>
 
@@ -460,28 +460,28 @@ Return <em>verification method</em>.
 
           <p>
 The following algorithm can be used for expanding a multibase-encoded
-multicodec value to decoded public key components. A <em>multibase value</em>
-and <em>options</em> are the required inputs. A <em>decoded public key</em> is
+multicodec value to decoded public key components. A <em>multibaseValue</em>
+and <em>options</em> are the required inputs. A <em>decodedPublicKey</em> is
 the output.
           </p>
 
           <ol class="algorithm">
             <li>
-Set <em>decoded public key</em> to an empty object.
+Set <em>decodedPublicKey</em> to an empty object.
             </li>
             <li>
-Decode <em>multibase value</em> using the base58-btc multibase alphabet and set
-<em>multicodec value</em> to the multicodec header for the decoded value.
-Implementers are cautioned to ensure that the <em>multicodec value</em>
+Decode <em>multibaseValue</em> using the base58-btc multibase alphabet and set
+<em>multicodecValue</em> to the multicodec header for the decoded value.
+Implementers are cautioned to ensure that the <em>multicodecValue</em>
 is set to the result after performing varint decoding.
             </li>
             <li>
-Set the <em>raw public key bytes</em> to the bytes remaining after the
+Set the <em>rawPublicKeyBytes</em> to the bytes remaining after the
 multicodec header.
             </li>
             <li>
-Return <em>multicodec value</em> and <em>raw public key bytes</em> as the
-<em>decoded public key</em>.
+Return <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> as the
+<em>decodedPublicKey</em>.
             </li>
           </ol>
         </section>
@@ -491,8 +491,8 @@ Return <em>multicodec value</em> and <em>raw public key bytes</em> as the
 
           <p>
 The following algorithm can be used to encode a multicodec value to a
-JSON Web Key. A <em>multicodec value</em>, <em>raw public key bytes</em>,
-and <em>options</em> are the required inputs. An <em>encoded JWK</em> is
+JSON Web Key. A <em>multicodecValue</em>, <em>rawPublicKeyBytes</em>,
+and <em>options</em> are the required inputs. An <em>encodedJWK</em> is
 the output.
           </p>
 
@@ -509,23 +509,23 @@ to the JSON Web Key format.
 The following algorithm can be used for decoding a multibase-encoded multicodec
 value into a verification method that is suitable for verifying that
 encrypted information will be received by the intended recipient. An
-<em>identifier</em>, <em>multibase value</em>, and
-<em>options</em> are the required inputs. A <em>verification method</em> is
+<em>identifier</em>, <em>multibaseValue</em>, and
+<em>options</em> are the required inputs. A <em>verificationMethod</em> is
 the resulting output.
           </p>
 
           <ol class="algorithm">
             <li>
-Initialize <em>verification method</em> to an empty object.
+Initialize <em>verificationMethod</em> to an empty object.
             </li>
             <li>
-Set <em>multicodec value</em> and <em>raw public key bytes</em> to the result
-of passing <em>multibase value</em> and <em>options</em> to
+Set <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> to the result
+of passing <em>multibaseValue</em> and <em>options</em> to
 <a href="#derive-encryption-key-algorithm"></a>.
             </li>
             <li>
-Ensure the proper key length of <em>raw public key bytes</em> based on the
-<em>multicodec value</em> table provided below:
+Ensure the proper key length of <em>rawPublicKeyBytes</em> based on the
+<em>multicodecValue</em> table provided below:
               <table class="simple">
                 <thead>
                   <th>Multicodec hexadecimal value</th>
@@ -540,50 +540,50 @@ Ensure the proper key length of <em>raw public key bytes</em> based on the
                   </tr>
                 </tbody>
               </table>
-If the byte length of <em>raw public key bytes</em> does not match the expected
-public key length for the associated <em>multicodec value</em>, an
+If the byte length of <em>rawPublicKeyBytes</em> does not match the expected
+public key length for the associated <em>multicodecValue</em>, an
 INVALID_PUBLIC_KEY_LENGTH error MUST be raised.
             </li>
             <li>
-Create the <em>multibase value</em> by concatenating the letter 'z' and the
-base58-btc encoding of the concatenation of the <em>multicodec value</em> and
-the <em>raw public key bytes</em>.
+Create the <em>multibaseValue</em> by concatenating the letter 'z' and the
+base58-btc encoding of the concatenation of the <em>multicodecValue</em> and
+the <em>rawPublicKeyBytes</em>.
             </li>
             <li>
-Set the <em>verification method</em> `id` value by concatenating
-<em>identifier</em>, a hash character (`#`), and the <em>multibase value</em>.
+Set the <em>verificationMethod.id</em> value by concatenating
+<em>identifier</em>, a hash character (`#`), and the <em>multibaseValue</em>.
             </li>
             <li>
-Set the <em>key encoding type</em> value to the <em>options</em>
-`publicKeyFormat` value.
+Set the <em>publicKeyFormat</em> value to the <em>options.publicKeyFormat</em>
+value.
             </li>
             <li>
-If <em>key encoding type</em> is not known to the implementation, an
+If <em>publicKeyFormat</em> is not known to the implementation, an
 UNSUPPORTED_PUBLIC_KEY_TYPE error MUST be raised.
             </li>
             <li>
-If <em>options</em> `enableExperimentalPublicKeyTypes` is set to `false` and
-<em>key encoding type</em> is not `Multikey`, `JsonWebKey2020`, or
+If <em>options.enableExperimentalPublicKeyTypes</em> is set to `false` and
+<em>publicKeyFormat</em> is not `Multikey`, `JsonWebKey2020`, or
 `X25519KeyAgreementKey2020`, an INVALID_PUBLIC_KEY_TYPE error MUST be raised.
             </li>
             <li>
-Set the <em>verification method</em> `type` to the <em>key encoding type</em>.
+Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             </li>
             <li>
-Set the <em>verification method</em> `controller` to <em>identifier</em>.
+Set <em>verificationMethod.controller</em> to <em>identifier</em>.
             </li>
             <li>
-If <em>key encoding type</em> is `Multikey` or `X25519KeyAgreementKey2020`,
-set the <em>verification method</em> `publicKeyMultibase` value to
-<em>multibase value</em>.
+If <em>publicKeyFormat</em> is `Multikey` or `X25519KeyAgreementKey2020`,
+set the <em>verificationMethod.publicKeyMultibase</em> value to
+<em>multibaseValue</em>.
             <li>
-If <em>key encoding type</em> is `JsonWebKey2020`, set the
-<em>verification method</em> `publicKeyJwk` value to the result of
-passing <em>multicodec value</em> and <em>raw public key bytes</em> to
+If <em>publicKeyFormat</em> is `JsonWebKey2020`, set the
+<em>verificationMethod.publicKeyJwk</em> value to the result of
+passing <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> to
 <a href="#encode-jwk-algorithm"></a>.
             </li>
             <li>
-Return <em>verification method</em>.
+Return <em>verificationMethod</em>.
             </li>
           </ol>
 
@@ -593,44 +593,44 @@ Return <em>verification method</em>.
           <h4>Derive Encryption Key Algorithm</h4>
 
           <p>
-The following algorithm can be used to transform a multibase-encoded
-multicodec value to public encryption key components that are suitable for
-encrypting messages to a receiver. A mathematical proof elaborating on the
-safety of performing this operation is available in [[THORMARKER]]. A <em>multibase value</em> and
-<em>options</em> are the required inputs. A <em>public encryption key</em> is
-the output.
+The following algorithm can be used to transform a multibase-encoded multicodec
+value to public encryption key components that are suitable for encrypting
+messages to a receiver. A mathematical proof elaborating on the safety of
+performing this operation is available in [[THORMARKER]]. A
+<em>multibaseValue</em> and <em>options</em> are the required inputs. A
+<em>publicEncryptionKey</em> is the output.
           </p>
 
           <ol class="algorithm">
             <li>
-Set <em>public encryption key</em> to an empty object.
+Set <em>publicEncryptionKey</em> to an empty object.
             </li>
             <li>
-Decode <em>multibase value</em> using the base58-btc multibase alphabet and set
-<em>multicodec value</em> to the multicodec header for the decoded value.
-Implementers are cautioned to ensure that the <em>multicodec value</em>
+Decode <em>multibaseValue</em> using the base58-btc multibase alphabet and set
+<em>multicodecValue</em> to the multicodec header for the decoded value.
+Implementers are cautioned to ensure that the <em>multicodecValue</em>
 is set to the result after performing varint decoding.
             </li>
             <li>
-Set the <em>raw public key bytes</em> to the bytes remaining after the
+Set the <em>rawPublicKeyBytes</em> to the bytes remaining after the
 multicodec header.
             </li>
             <li>
-If the <em>multicodec value</em> is `0xed`, derive a public X25519 encryption
-key by using the <em>raw public key bytes</em> and the
+If the <em>multicodecValue</em> is `0xed`, derive a public X25519 encryption
+key by using the <em>rawPublicKeyBytes</em> and the
 algorithm defined in [[OSCORE]] for Curve25519 in
 Section 2.4.2: ECDH with Montgomery Coordinates and set
-<em>generated public encryption key bytes</em> to the result.
+<em>generatedPublicEncryptionKeyBytes</em> to the result.
             </li>
             <li>
-Set <em>multicodec value</em> in <em>public encryption key</em> to `0xec`.
+Set <em>multicodecValue</em> in <em>publicEncryptionKey</em> to `0xec`.
             </li>
             <li>
-Set <em>raw public key bytes</em> in <em>public encryption key</em> to
-<em>generated public encryption key bytes</em>.
+Set <em>rawPublicKeyBytes</em> in <em>publicEncryptionKey</em> to
+<em>generatedPublicEncryptionKeyBytes</em>.
             </li>
             <li>
-Return <em>public encryption key</em>.
+Return <em>publicEncryptionKey</em>.
             </li>
           </ol>
         </section>
