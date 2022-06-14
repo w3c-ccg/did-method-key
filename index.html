@@ -306,11 +306,6 @@ Initialize the <em>signatureVerificationMethod</em> to the result of passing
 <a href="#signature-method-creation-algorithm"></a>.
             </li>
             <li>
-Initialize the <em>encryptionVerificationMethod</em> to the result of passing
-<em>identifier</em>, <em>multibaseValue</em>, and <em>options</em> to
-<a href="#encryption-method-creation-algorithm"></a>.
-            </li>
-            <li>
 Set <em>document.id</em> to <em>identifier</em>. If <em>document.id</em> is not
 a valid DID, an INVALID_DID error MUST be raised.
             </li>
@@ -325,11 +320,23 @@ where the first item is the value of the `id` property in
 <em>signatureVerificationMethod</em>.
             </li>
             <li>
-If <em>options.disableKeyAgreement</em> is not set to `true`,
-add the <em>encryptionVerificationMethod</em> value to the
-`verificationMethod` array and initialize the `keyAgreement` property in
-<em>document</em> to an array where the first item is the value of the `id`
-property in <em>encryptionVerificationMethod</em>.
+If <em>options.enableEncryptionKeyDerivation</em> is set to `true`:
+              <ol class="algorithm">
+                <li>
+Initialize the <em>encryptionVerificationMethod</em> to the result of passing
+<em>identifier</em>, <em>multibaseValue</em>, and <em>options</em> to
+<a href="#encryption-method-creation-algorithm"></a>.
+                </li>
+                <li>
+Add the <em>encryptionVerificationMethod</em> value to the `verificationMethod`
+array.
+                </li>
+                <li>
+Initialize the `keyAgreement` property in <em>document</em> to an array where
+the first item is the value of the `id` property in
+<em>encryptionVerificationMethod</em>.
+                </li>
+              </ol>
             </li>
             <li>
 Return <em>document</em>.
