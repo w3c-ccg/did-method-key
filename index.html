@@ -693,9 +693,9 @@ Set <em>contextArray</em> to an array that is initialized to
 <em>options.defaultContext</em>.
             </li>
             <li>
-For every object in <em>document.verificationMethod</em>, add a string value
-to the <em>contextArray</em> based on the object `type` value, according to
-the following table:
+For every object in every verification relationship listed in <em>document</em>,
+add a string value to the <em>contextArray</em> based on the object `type`
+value, if it doesn't already exist, according to the following table:
               <table class="simple">
                 <thead>
                   <th>`type` value</th>
