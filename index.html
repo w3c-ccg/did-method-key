@@ -769,12 +769,60 @@ This DID Method does not support deactivating the DID Document.
 
     <section class="informative">
       <h2>Test Vectors</h2>
-      <!-- No way to do directory listing on github pages short of generating them client side :-(  Not sure if there's a better way to do this -->
-      <p>For a full list of test vectors see <a href="https://github.com/w3c-ccg/did-method-key/tree/master/test-vectors">test vectors</a>.</p>
-
+  
+      
+      <p>For a full list of test vectors see <a href="https://github.com/w3c-ccg/did-method-key/tree/main/test-vectors">test vectors</a>.</p>
+      <p>We provide only the <code>verificationMethod</code> section of the DID Document in these examples.</p>
+      
       <section class="informative">
         <h3>Ed25519 / X25519</h3>
-          <p>These DID always start with <code>z6Mk</code>.</p>
+        <p>These DID always start with <code>z6Mk</code>.</p>
+
+        <pre class="example" title="JWK Example">
+...
+"verificationMethod": [
+  {
+    "id": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp#z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+    "type": "JsonWebKey2020",
+    "controller": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "O2onvM62pC1io6jQKm8Nc2UyFXcd4kOmOsBIoYtZ2ik"
+    }
+  },
+  {
+    "id": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp#z6LShs9GGnqk85isEBzzshkuVWrVKsRp24GnDuHk8QWkARMW",
+    "type": "JsonWebKey2020",
+    "controller": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "X25519",
+      "x": "W_Vcc7guviK-gPNDBmevVw-uJVamQV5rMNQGUwCqlH0"
+    }
+  }
+],
+...
+        </pre>
+        <pre class="example" title="Multicodec Example">
+...
+"verificationMethod": [
+    {
+      "id": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp#z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+      "publicKeyMultibase": "z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp"
+    },
+    {
+      "id": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp#z6LShs9GGnqk85isEBzzshkuVWrVKsRp24GnDuHk8QWkARMW",
+      "type": "X25519KeyAgreementKey2020",
+      "controller": "did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp",
+      "publicKeyMultibase": "z6LShs9GGnqk85isEBzzshkuVWrVKsRp24GnDuHk8QWkARMW"
+    }
+  ],
+...
+        </pre>
+
         <pre class="example">
           did:key:z6MkiTBz1ymuepAQ4HEHYSF1H8quG5GLVVQR3djdX3mDooWp
           did:key:z6MkjchhfUsD6mmvni8mCdXHw216Xrm9bQe2mBH1P5RDjVJG
