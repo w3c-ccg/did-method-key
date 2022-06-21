@@ -532,15 +532,77 @@ Return <em>multicodecValue</em> and <em>rawPublicKeyBytes</em> as the
           <h4>Encode JWK Algorithm</h4>
 
           <p>
-The following algorithm can be used to encode a multicodec value to a
-JSON Web Key. A <em>multicodecValue</em>, <em>rawPublicKeyBytes</em>,
-and <em>options</em> are the required inputs. An <em>encodedJWK</em> is
-the output.
+There are 2 categories of JWK expressions for multicodec encoded public keys.
           </p>
 
-          <p class="issue">
-Add the various was of transforming multicodec values and raw public key bytes
-to the JSON Web Key format.
+          <p>
+Standard JWK representations can be found under the IANA registry for 
+<a href="https://www.iana.org/assignments/jose/jose.xhtml">
+  JSON Object Signing and Encryption (JOSE)
+</a>.
+          </p>
+          <div class="note">
+           See also the associated RFCs:
+           <ul>
+            <li>
+              <a href="https://www.rfc-editor.org/rfc/rfc7517">RFC7515: JSON Web Key (JWK)</a>
+            </li>
+            <li>
+              <a href="https://www.rfc-editor.org/rfc/rfc8037">RFC8037: 
+                CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures
+                in JSON Object Signing and Encryption (JOSE)</a>
+            </li>
+           </ul>
+          </div>
+
+          <p>
+In cases where a key type has not been formally standardized yet a 
+specification describing the key encoding is provided. 
+          </p>
+
+          <p class="advisement">
+BLS12381 is the only instance of such a key type in the current method specification.
+See this document tracking its proposed standardization at IETF. See
+<a href="https://datatracker.ietf.org/doc/draft-looker-cose-bls-key-representations/">
+  draft-looker-cose-bls-key-representations</a>.
+          </p>
+
+          <p>
+Implementations MUST conform to the normative requirements of the RFCs and specifications above.
+          </p>
+
+           <p>
+The following algorithm can be used to encode a multicodec value to a
+JSON Web Key. A <em>multicodecValue</em>, <em>rawPublicKeyBytes</em> 
+are the required inputs. An <em>encodedJWK</em> is the output.
+          </p>
+
+          <ol class="algorithm">
+            <li>
+Obtain the associated <code>kty</code>, <code>crv</code>, <code>n</code>,<code>e</code> 
+values for the JWK representation of the key type identified by <em>multicodecValue</em>.
+            </li>
+            <li>
+              If <code>y</code> is required member of the public key, 
+              perform elliptic curve expansion by applying 
+<a href="https://tools.ietf.org/id/draft-jivsov-ecc-compact-05.html">decompression algorithm specified here.</a> 
+to obtain <code>y</code> and <code>x</code>. 
+Otherwise simply encode <code>x</code> according to the associated RFCs.
+            </li>
+            <li>
+Encode the final JWK object by including the members required for the given key type identified by <em>multicodecValue</em>, 
+according to the requirements defined by the relevant RFC.
+            </li>
+            <li>
+Ensure that <code>d</code> is NOT present.
+            </li>
+          </ol>
+
+          <p class="issue" data-number="55">
+Address RSA encoding for DER encoded RSA keys.
+          </p>
+          <p class="issue" data-number="54">
+Address BLS12381 Encoding.
           </p>
         </section>
 
