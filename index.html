@@ -437,7 +437,7 @@ IETF RFC 8017 (PKCS #1)
               </table>
 If the byte length of <em>rawPublicKeyBytes</em> does not match the expected
 public key length for the associated <em>multicodecValue</em>, an
-INVALID_PUBLIC_KEY_LENGTH error MUST be raised.
+invalidPublicKeyLength error MUST be raised.
             </li>
             <li>
 Ensure the <em>rawPublicKeyBytes</em> are a proper encoding of the public key
@@ -584,7 +584,7 @@ Ensure the proper key length of <em>rawPublicKeyBytes</em> based on the
               </table>
 If the byte length of <em>rawPublicKeyBytes</em> does not match the expected
 public key length for the associated <em>multicodecValue</em>, an
-INVALID_PUBLIC_KEY_LENGTH error MUST be raised.
+invalidPublicKeyLength error MUST be raised.
             </li>
             <li>
 Create the <em>multibaseValue</em> by concatenating the letter 'z' and the
