@@ -309,7 +309,7 @@ Check the validity of the input <em>identifier</em>. The <em>scheme</em> MUST be
 the value `did`. The <em>method</em> MUST be the value `key`. The
 <em>version</em> MUST be convertible to a positive integer value. The
 <em>multibaseValue</em> MUST be a string and begin with the letter `z`. If any
-of these requirements fail, an INVALID_DID error MUST be raised.
+of these requirements fail, an invalidDid error MUST be raised.
             </li>
             <li>
 Initialize the <em>signatureVerificationMethod</em> to the result of passing
@@ -318,7 +318,7 @@ Initialize the <em>signatureVerificationMethod</em> to the result of passing
             </li>
             <li>
 Set <em>document.id</em> to <em>identifier</em>. If <em>document.id</em> is not
-a valid DID, an INVALID_DID error MUST be raised.
+a valid DID, an invalidDid error MUST be raised.
             </li>
             <li>
 Initialize the `verificationMethod` property in <em>document</em> to an array
@@ -477,7 +477,7 @@ Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             </li>
             <li>
 Set <em>verificationMethod.controller</em> to the <em>identifier</em> value.
-If <em>verificationMethod.controller</em> is not a valid DID, an INVALID_DID
+If <em>verificationMethod.controller</em> is not a valid DID, an invalidDid
 error MUST be raised.
             </li>
             <li>
@@ -616,7 +616,7 @@ Set <em>verificationMethod.type</em> to the <em>publicKeyFormat</em> value.
             <li>
 Set <em>verificationMethod.controller</em> to <em>identifier</em>. If
 <em>verificationMethod.controller</em> is not a valid DID, an
-INVALID_DID error MUST be raised.
+invalidDid error MUST be raised.
             </li>
             <li>
 If <em>publicKeyFormat</em> is `Multikey` or `X25519KeyAgreementKey2020`,
