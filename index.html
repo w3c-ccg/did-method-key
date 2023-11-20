@@ -306,10 +306,11 @@ components: a <em>scheme</em>, a <em>method</em>, a <em>version</em>, and a
             </li>
             <li>
 Check the validity of the input <em>identifier</em>. The <em>scheme</em> MUST be
-the value `did`. The <em>method</em> MUST be the value `key`. The
-<em>version</em> MUST be convertible to a positive integer value. The
-<em>multibaseValue</em> MUST be a string and begin with the letter `z`. If any
-of these requirements fail, an `invalidDid` error MUST be raised.
+the value `did`. If this requirement fails, an `invalidDid` error MUST be raised.
+The <em>method</em> MUST be the value `key`. If this requirement fails, a
+`methodNotSupported` error MUST be raised. The <em>version</em> MUST be convertible
+to a positive integer value. The <em>multibaseValue</em> MUST be a string and begin
+with the letter `z`. If any of these requirements fail, an `invalidDid` error MUST be raised.
             </li>
             <li>
 Initialize the <em>signatureVerificationMethod</em> to the result of passing
